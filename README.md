@@ -44,7 +44,7 @@ using::console.print,"Hello World";
 using::console.print,"I am really cool string";
 ```
 
-- Enable a debug mode using `option` keyword.
+- You can also enable a debug mode using `option` keyword.
 
 Output:
 ```
@@ -62,11 +62,7 @@ Output:
 [14:05:43]                                         
 [14:05:43] =====================[script.dpp]=====================
 [14:05:43] include.dpp is imported
-[14:05:43] [D++]: (info) - Processing: ' using::console.Print,"Hello World"'
-[14:05:43] [D++]: (info) - funcgrp: 'using::console Print'
 [14:05:43] Hello World
-[14:05:43] [D++]: (info) - Processing: ' using::console.Print,"I am really cool string"'
-[14:05:43] [D++]: (info) - funcgrp: 'using::console Print'
 [14:05:43] I am really cool string
 [14:05:43] =====================[EOS]=====================
 ```
