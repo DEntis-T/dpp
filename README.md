@@ -8,7 +8,7 @@
 - To start, we're going to make simple "Hello World" program in `script.dpp`.
 - `script.dpp`:
 ```pawn
-using::console.Print,"Hello World";
+using::console.print,"Hello World";
 ```
 Output:
 ```
@@ -40,8 +40,8 @@ import::file,"include";
 
 option::debug,1;
 
-using::console.Print,"Hello World";
-using::console.Print,"I am really cool string";
+using::console.print,"Hello World";
+using::console.print,"I am really cool string";
 ```
 
 - Enable a debug mode using `option` keyword.
