@@ -70,3 +70,8 @@ Output:
 [14:05:43] I am really cool string
 [14:05:43] =====================[EOS]=====================
 ```
+
+- You can also create variables and assign data to them.
+```pawn
+decl::var.int,MyVariable; var::set.int,MyVariable,200;
+```
