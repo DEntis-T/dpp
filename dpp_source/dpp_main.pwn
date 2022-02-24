@@ -7,13 +7,16 @@
 *
 */
 
-#define dpp_configfile "../gamemodes/dpp_settings.cfg"
+#pragma dynamic 215750000
+
+#define dpp_configfile "dpp_settings.cfg"
 
 #include <a_samp>
 
 enum enum_Config
 {
-	file[32]
+	filetoconfig[32],
+	execdebug
 }
 
 new g_Config[enum_Config];
@@ -23,5 +26,6 @@ new g_Config[enum_Config];
 
 stock main()
 {
-	return dpp_execute();
+	dpp_init();
+	dpp_execute("script.dpp");
 }
