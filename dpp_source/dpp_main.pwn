@@ -28,4 +28,5 @@ stock main()
 {
 	dpp_init();
 	dpp_execute("script.dpp");
+	printf("Value of MyVariable: %i", get Integer("MyVariable"));
 }
