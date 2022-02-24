@@ -1,7 +1,7 @@
 # DPlusPlus
 :zap: ¤ D++ programming language written in Pawn.
 
-# Introduction D++
+# Introduction to `D++`
 - D++ is a simple and small programming language written in Pawn.
 
 ## Quick Start
