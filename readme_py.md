@@ -1,6 +1,4 @@
-+++++++++++
-Python News
-+++++++++++
+# **Python News**
 
 What's New in Python 2.7.15 final?
 ==================================
