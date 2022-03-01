@@ -2,7 +2,7 @@
 :zap: ¤ D++ programming language written in Pawn.
 
 # Introduction to `D++`
-- D++ is a simple and small programming language written in Pawn.
+- D++ is a simple and small programming language written in Pawn by DEntisT in 2021.
 
 ## Quick Start
 - To start, we're going to make simple "Hello World" program in `script.dpp`.
