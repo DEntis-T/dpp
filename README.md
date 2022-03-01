@@ -8,7 +8,7 @@
 - To start, we're going to make simple "Hello World" program in `script.dpp`.
 - `script.dpp`:
 ```pawn
-using::console.print,"Hello World";
+import::package.console; using::console.print,"Hello World";
 ```
 Output:
 ```
