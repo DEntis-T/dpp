@@ -902,9 +902,21 @@ dppfunc::print(const str[])
 }
 */
 
+#define max_functions 100
+
+enum FunctionInfo
+{
+    name[32],
+    data[1024]
+}
+
+new g_FunctionCache[max_functions][FunctionInfo];
+
 #define dpp_error(%1) printf("D++ | Error: "%1)
 #define dpp_debug(%1) printf("D++ | Debug: "%1)
 #define dpp_print(%1) printf("[D++]: (info) - "%1)
+
+new funcindex;
 
 dppfunc::process(const line[])
 {
@@ -948,6 +960,11 @@ dppfunc::process(const line[])
     }
     if(!strcmp(funcgroup[0], "using::console"))
     {
+        if(g_Config[console_pkg] == 0)
+        {
+            dpp_error("Package 'console' is not imported.");
+            return 1;
+        }
         // If the function used it "print"
         if(!strcmp(funcgroup[1], "print"))
         {
@@ -971,6 +988,54 @@ dppfunc::process(const line[])
             return 0;
         }
     }
+    if(!strcmp(funcgroup[0], "using::user"))
+    {
+        if(g_Config[user_pkg] == 0)
+        {
+            dpp_error("Package 'user' is not imported.");
+            return 1;
+        }
+        // If the function used it "print"
+        for(new d; d < max_functions; d++)
+        {
+            if(!strcmp(g_FunctionCache[d][name], funcgroup[1]))
+            {
+                new data_address[100][1024];
+                dpp_split(
+                    g_FunctionCache[d][data],
+                    data_address,
+                    '+'
+                    )
+                ;
+                for(new i; i < 100; i++)
+                {
+                    dpp_subprocess(data_address[i]);
+                }
+                return 1;
+            }
+        }
+        dpp_error("Unknown user function.");
+        return 0;
+    }
+    if(!strcmp(funcgroup[0], "import::package"))
+    {
+        // If the function used it "print"
+        if(!strcmp(funcgroup[1], "console"))
+        {
+            g_Config[console_pkg] = 1;
+            return 1;
+        }
+        if(!strcmp(funcgroup[1], "user"))
+        {
+            g_Config[user_pkg] = 1;
+            return 1;
+        }
+        else
+        {
+            dpp_error("Unknown package.");
+            return 0;
+        }
+    }
     if(!strcmp(funcgroup[0], "decl::var"))
     {
         // If the var is integer
@@ -978,6 +1043,34 @@ dppfunc::process(const line[])
         {
             dpp_print("Var : %s created.", args[1]);
             declare Integer(args[1]);
+            return 1;
+        }
+        else
+        {
+            dpp_error("Invalid declaration.");
+            return 0;
+        }
+    }
+    if(!strcmp(funcgroup[0], "decl::func"))
+    {
+        static address[2][1024];
+        dpp_split(line, address, '?');
+        // If the var is integer
+        if(!strcmp(funcgroup[1], "int"))
+        {
+            strmid(
+                g_FunctionCache[funcindex][name],
+                args[1],
+                0, strlen(args[1])
+                )
+            ;
+            strmid(
+                g_FunctionCache[funcindex][data],
+                address[1],
+                0, strlen(address[1])
+                )
+            ;
+            funcindex++;
             return 1;
         }
         else

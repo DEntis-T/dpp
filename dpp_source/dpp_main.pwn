@@ -16,7 +16,9 @@
 enum enum_Config
 {
 	filetoconfig[32],
-	execdebug
+	execdebug,
+	console_pkg,
+	user_pkg
 }
 
 new g_Config[enum_Config];
