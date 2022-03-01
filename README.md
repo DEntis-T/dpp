@@ -1,4 +1,4 @@
-# DPlusPlus
+# D++
 :zap: ¤ D++ programming language written in Pawn.
 
 # Introduction to `D++`
