@@ -1,5 +1,6 @@
 # D++
 :zap: ¤ D++ programming language written in Pawn.
+© & ® BRACE™
 
 # Introduction to `D++`
 - D++ is a simple and small programming language written in Pawn by DEntisT in 2021.
